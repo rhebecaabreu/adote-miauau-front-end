@@ -46,9 +46,7 @@ const PublishPet = () => {
   return (
     <Root>
       <GridFill md={2} proportion={"1fr"}>
-        <PetForm pet={pet} setPet={setPet}>
-          form
-        </PetForm>
+        <PetForm pet={pet} setPet={setPet}></PetForm>
         <Image image={MotherPet} />
       </GridFill>
     </Root>

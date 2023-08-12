@@ -82,9 +82,11 @@ const Button = styled.button`
   font-weight: 400;
   padding: 12px 36px;
   cursor: pointer;
-  background-color: ${getMainColor};
+  background-color: ${(props) =>
+    props.clicked ? props.theme.colors.primary.main : getMainColor};
   border: none;
-  color: ${getColorText};
+  color: ${(props) =>
+    props.clicked ? props.theme.colors.primary.light : getColorText};
   display: inline-block;
   text-decoration: none;
   border-radius: 30px;
@@ -101,9 +103,10 @@ const Button = styled.button`
 `;
 
 const ButtonDefault = styled(Button)`
-  background-color: transparent;
-  color: ${getDefaultText};
-
+  background-color: ${(props) =>
+    props.clicked ? props.theme.colors.primary.main : "transparent"};
+  color: ${(props) =>
+    props.clicked ? props.theme.colors.primary.light : getDefaultText};
   &:hover:not(:disabled) {
     background-color: transparent;
     color: ${getDarkColor};
@@ -111,9 +114,11 @@ const ButtonDefault = styled(Button)`
 `;
 
 const ButtonLink = styled(Button)`
-  background-color: transparent;
+  background-color: ${(props) =>
+    props.clicked ? props.theme.colors.primary.main : "transparent"};
   border-color: transparent;
-  color: ${getLinkText};
+  color: ${(props) =>
+    props.clicked ? props.theme.colors.primary.light : getLinkText};
   padding-left: 0;
   padding-right: 0;
 
@@ -140,6 +145,7 @@ ButtonWrapper.defaultProps = {
   children: undefined,
   color: "default",
   variant: "default",
+  clicked: false,
 };
 
 ButtonWrapper.propTypes = {
@@ -147,6 +153,7 @@ ButtonWrapper.propTypes = {
   children: PropTypes.node,
   color: PropTypes.oneOf(Object.values(ButtonColors)),
   variant: PropTypes.oneOf(Object.values(ButtonsVariants)),
+  clicked: PropTypes.bool,
 };
 
 export default ButtonWrapper;

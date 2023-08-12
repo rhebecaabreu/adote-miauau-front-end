@@ -24,7 +24,6 @@ const GlobalStyle = createGlobalStyle`
       flex-direction: column;
       overflow: hidden;
       height: 100vh;
-
     }
   }
 

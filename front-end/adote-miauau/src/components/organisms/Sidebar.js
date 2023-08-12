@@ -11,6 +11,7 @@ const Root = styled.div`
 
   button {
     margin-bottom: 18px;
+    font-weight: 500;
 
     &:first-child {
       margin-top: 10px;
