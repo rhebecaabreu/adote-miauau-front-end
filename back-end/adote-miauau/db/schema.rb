@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_12_224407) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_12_225225) do
   create_table "addresses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "state"
     t.string "city"
@@ -29,6 +29,33 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_12_224407) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "pets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "type"
+    t.string "age"
+    t.boolean "vaccinated"
+    t.boolean "castrated"
+    t.boolean "vermifugated"
+    t.string "coat_color"
+    t.string "status"
+    t.string "size"
+    t.bigint "publication_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["publication_id"], name: "index_pets_on_publication_id"
+  end
+
+  create_table "publications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_publications_on_category_id"
+    t.index ["user_id"], name: "index_publications_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -50,4 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_12_224407) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "pets", "publications"
+  add_foreign_key "publications", "categories"
+  add_foreign_key "publications", "users"
 end
