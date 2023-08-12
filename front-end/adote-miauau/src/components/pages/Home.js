@@ -8,7 +8,6 @@ import PetsGrid from "components/organisms/PetsGrid";
 import styled from "styled-components";
 
 const Root = styled.section`
-  height: 100%;
   display: flex;
   flex-direction: column;
 `;

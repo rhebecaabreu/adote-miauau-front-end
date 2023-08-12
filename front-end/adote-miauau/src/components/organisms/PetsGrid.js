@@ -17,9 +17,14 @@ const Description = styled.p`
   font-weight: 400;
 `;
 
+const Root = styled.div`
+  max-height: 82vh;
+  overflow: auto;
+`;
+
 const PetsGrid = ({ pets }) => {
   return (
-    <>
+    <Root>
       <Grid md={3} proportion={"1fr"}>
         {pets.map((pet) => (
           <PetCard key={pet.id}>
@@ -42,7 +47,7 @@ const PetsGrid = ({ pets }) => {
           </PetCard>
         ))}
       </Grid>
-    </>
+    </Root>
   );
 };
 

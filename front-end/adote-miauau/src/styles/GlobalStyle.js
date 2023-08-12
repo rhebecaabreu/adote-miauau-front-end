@@ -20,9 +20,9 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
 
     .root {
-      height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
   }
 

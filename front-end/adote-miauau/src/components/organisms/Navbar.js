@@ -6,6 +6,7 @@ import Button from "components/atoms/Button";
 import { Link } from "react-router-dom";
 
 const Root = styled.header`
+  position: relative;
   color: #fff;
   padding: 50px 0;
 

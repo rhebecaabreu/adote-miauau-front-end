@@ -32,7 +32,7 @@ const StyledMedia = styled.div`
   background-image: url(${(props) => props.image});
   background-position: center center;
   background-size: cover;
-  height: 270px;
+  height: 220px;
 `;
 
 export const CardMedia = ({ image, children }) => (
