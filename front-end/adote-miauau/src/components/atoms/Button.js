@@ -153,7 +153,7 @@ ButtonWrapper.propTypes = {
   children: PropTypes.node,
   color: PropTypes.oneOf(Object.values(ButtonColors)),
   variant: PropTypes.oneOf(Object.values(ButtonsVariants)),
-  clicked: PropTypes.bool,
+  clicked: PropTypes.oneOfType(PropTypes.any, PropTypes.bool),
 };
 
 export default ButtonWrapper;
