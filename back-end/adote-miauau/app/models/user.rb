@@ -8,6 +8,7 @@ class User < ApplicationRecord
   enumerize :type, in: [:protector, :ong], default: :protector
   enumerize :permissions, in: [:common, :admin], default: :common
 
+  has_many :publications
   has_one :address, as: :addressable
 
 end
