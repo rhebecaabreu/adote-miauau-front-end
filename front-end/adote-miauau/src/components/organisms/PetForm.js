@@ -64,7 +64,6 @@ const PetForm = ({ pet, setPet }) => {
         <PetInfo number={2} />
         <PetInfoHealth number={3} />
         <AddressInfo number={4} />
-        <SuccessPage number={5} />
       </Wizard>
     </Root>
   );
