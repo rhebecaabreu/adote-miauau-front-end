@@ -6,6 +6,8 @@ export const ButtonColors = {
   default: "default",
   primary: "primary",
   dark: "dark",
+  danger: "danger",
+  pink: "pink",
 };
 
 export const ButtonsVariants = {
@@ -20,6 +22,10 @@ const getMainColor = ({ theme, color }) => {
       return theme.colors.primary.main;
     case ButtonColors.dark:
       return theme.colors.primary.dark;
+    case ButtonColors.danger:
+      return theme.colors.danger;
+    case ButtonColors.pink:
+      return theme.colors.pink;
     default:
       return theme.colors.primary.light;
   }
@@ -29,8 +35,12 @@ const getDarkColor = ({ theme, color }) => {
   switch (color) {
     case ButtonColors.primary:
       return theme.colors.primary.dark;
+    case ButtonColors.dark:
+      return theme.colors.primary.main;
     case ButtonColors.danger:
-      return theme.colors.light.dark;
+      return theme.colors.danger;
+    case ButtonColors.pink:
+      return theme.colors.pink;
     default:
       return "#5a6268";
   }
@@ -42,6 +52,10 @@ const getColorText = ({ theme, color }) => {
       return theme.colors.primary.light;
     case ButtonColors.dark:
       return theme.colors.primary.light;
+    case ButtonColors.danger:
+      return theme.colors.danger;
+    case ButtonColors.pink:
+      return theme.colors.pink;
     default:
       return theme.colors.primary.textDark;
   }

@@ -11,6 +11,8 @@ const light = {
       textDark: "rgba(0, 0, 0, 0.5)",
     },
     border: "#CECECE",
+    danger: "#FF5757",
+    pink: "#F8AED3",
   },
 };
 

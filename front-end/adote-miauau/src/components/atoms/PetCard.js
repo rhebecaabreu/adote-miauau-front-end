@@ -28,6 +28,8 @@ CardBody.propTypes = {
 //#region CardMedia
 
 const StyledMedia = styled.div`
+  border: 6px solid ${(props) => props.theme.colors.border};
+  border-radius: 10px;
   display: flex;
   background-image: url(${(props) => props.image});
   background-position: center center;
@@ -54,7 +56,6 @@ CardMedia.propTypes = {
 //#region CardMediaDescription
 
 const StyledMediaDescription = styled.div`
-  background-color: rgba(0, 0, 0, 0.4);
   padding: 8px 16px;
   color: #fff;
   align-self: flex-end;
@@ -87,9 +88,9 @@ CardMediaDescription.propTypes = {
 //#region Card
 
 const StyledCard = styled.div`
-  background-color: #fff;
+  background-color: ${(props) => props.theme.colors.primary.light};
   border-radius: 4px;
-  border: 1px solid ${(props) => props.theme.colors.border};
+  border: none;
   overflow: hidden;
 `;
 
