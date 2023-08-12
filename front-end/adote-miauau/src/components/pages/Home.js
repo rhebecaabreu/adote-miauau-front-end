@@ -5,6 +5,13 @@ import { Link } from "react-router-dom";
 import Grid from "components/atoms/Grid";
 import Sidebar from "../organisms/Sidebar";
 import PetsGrid from "components/organisms/PetsGrid";
+import styled from "styled-components";
+
+const Root = styled.section`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 
 const Home = () => {
   const pets = [
@@ -56,15 +63,23 @@ const Home = () => {
       },
       image: "Imagem",
     },
+    {
+      id: "7",
+      title: "laranjinha a procura de um lar",
+      user: {
+        name: "ONG Abrigo dos bichoss",
+      },
+      image: "Imagem",
+    },
   ];
 
   return (
-    <>
+    <Root>
       <Grid md={1} proportion={"1fr 6fr"}>
         <Sidebar></Sidebar>
         <PetsGrid pets={pets}></PetsGrid>
       </Grid>
-    </>
+    </Root>
   );
 };
 

@@ -5,7 +5,7 @@ import Miauau from "../../assets/MiauauLogo.svg";
 import Button from "components/atoms/Button";
 import { Link } from "react-router-dom";
 
-const Root = styled.div`
+const Root = styled.header`
   color: #fff;
   padding: 50px 0;
 

@@ -38,6 +38,7 @@ const Root = styled.div`
 
 const GridFill = styled(Grid)`
   flex: 1 1 auto;
+  max-height: 100%;
 `;
 
 const PublishPet = () => {
