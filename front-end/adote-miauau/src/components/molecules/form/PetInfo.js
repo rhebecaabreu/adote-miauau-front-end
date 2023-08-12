@@ -6,6 +6,7 @@ import FormInput from "components/atoms/FormInput";
 import FormTextArea from "components/atoms/FormTextArea";
 import FormButtonGroup from "components/atoms/FormButtonGroup";
 import FormSelect from "components/atoms/FormSelect";
+import { BsFileImageFill } from "react-icons/bs";
 
 const Root = styled.div`
   h6 {
@@ -13,6 +14,17 @@ const Root = styled.div`
     margin-top: 0;
     text-transform: uppercase;
   }
+`;
+
+const UploadArea = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const ImageUpload = styled.div`
+  font-size: 120px;
+  height: 150px;
+  color: ${(props) => props.theme.colors.border};
 `;
 
 const PetInfo = () => {
@@ -32,13 +44,17 @@ const PetInfo = () => {
   return (
     <Root>
       <FormLabel>Insira imagens do pet</FormLabel>
-      <FormInput
-        type="text"
-        value={title}
-        placeholder=""
-        name="title"
-        onChange={handleChange}
-      ></FormInput>
+      <UploadArea>
+        <ImageUpload>
+          <BsFileImageFill />
+        </ImageUpload>
+        <ImageUpload>
+          <BsFileImageFill />
+        </ImageUpload>
+        <ImageUpload>
+          <BsFileImageFill />
+        </ImageUpload>
+      </UploadArea>
 
       <FormLabel>Sexo</FormLabel>
       <FormButtonGroup
