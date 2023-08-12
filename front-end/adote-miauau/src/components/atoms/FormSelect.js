@@ -17,8 +17,10 @@ const StyledSelect = styled.select`
 const FormSelect = ({ value, options, onChange }) => {
   return (
     <StyledSelect value={value} onChange={onChange}>
-      {options.map((option) => (
-        <option value={option.value}>{option.label}</option>
+      {options.map((option, i) => (
+        <option key={i} value={option.value}>
+          {option.label}
+        </option>
       ))}
     </StyledSelect>
   );

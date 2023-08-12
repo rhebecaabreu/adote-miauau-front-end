@@ -7,6 +7,7 @@ import FormTextArea from "components/atoms/FormTextArea";
 import FormButtonGroup from "components/atoms/FormButtonGroup";
 import FormSelect from "components/atoms/FormSelect";
 import { BsFileImageFill } from "react-icons/bs";
+import UploadIcon from "../../../assets/upload.svg";
 
 const Root = styled.div`
   h6 {
@@ -22,9 +23,13 @@ const UploadArea = styled.div`
 `;
 
 const ImageUpload = styled.div`
+  background-image: url(${(props) => props.image});
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
   font-size: 120px;
+  width: 120px;
   height: 150px;
-  color: ${(props) => props.theme.colors.border};
 `;
 
 const PetInfo = () => {
@@ -45,15 +50,9 @@ const PetInfo = () => {
     <Root>
       <FormLabel>Insira imagens do pet</FormLabel>
       <UploadArea>
-        <ImageUpload>
-          <BsFileImageFill />
-        </ImageUpload>
-        <ImageUpload>
-          <BsFileImageFill />
-        </ImageUpload>
-        <ImageUpload>
-          <BsFileImageFill />
-        </ImageUpload>
+        <ImageUpload image={UploadIcon}></ImageUpload>
+        <ImageUpload image={UploadIcon}></ImageUpload>
+        <ImageUpload image={UploadIcon}></ImageUpload>
       </UploadArea>
 
       <FormLabel>Sexo</FormLabel>
@@ -68,7 +67,7 @@ const PetInfo = () => {
           { label: "0 a 6 meses", value: "water" },
           { label: "6 meses a 2 anos", value: "beer" },
           { label: "2 anos 5 anos", value: "wine" },
-          { label: "5 anos ou mais", value: "wine" },
+          { label: "5 anos ou mais", value: "win11e" },
         ]}
       ></FormSelect>
 
