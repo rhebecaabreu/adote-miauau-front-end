@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from "components/atoms/Button";
 
-const Root = styled.footer`
+const Root = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.primary.main};

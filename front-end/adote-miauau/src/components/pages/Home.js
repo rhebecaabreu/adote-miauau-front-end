@@ -60,23 +60,6 @@ const Home = () => {
 
   return (
     <>
-      <Navbar>
-        <Button as={Link} to="/" color="default" variant="default">
-          Início
-        </Button>
-        <Button as={Link} to="/sobre" color="default" variant="default">
-          Sobre o Miauau
-        </Button>
-        <Button as={Link} to="/publicar" color="primary" variant="primary">
-          Publicar pet
-        </Button>
-        <Button as={Link} to="/favoritos" color="primary" variant="primary">
-          Favoritos
-        </Button>
-        <Button color="primary" variant="primary">
-          Meu perfil
-        </Button>
-      </Navbar>
       <Grid md={1} proportion={"1fr 6fr"}>
         <Sidebar></Sidebar>
         <PetsGrid pets={pets}></PetsGrid>

@@ -18,6 +18,12 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
+
+    .root {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   a, button {
