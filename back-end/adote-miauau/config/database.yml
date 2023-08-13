@@ -50,7 +50,8 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["MYSQL_URL"] %>
+  host: <=% ENV["MYSQLHOST"] %>
   database: railway
   username: root
   password: <%= ENV["MYSQLPASSWORD"] %>
-  url: <%= ENV["MYSQL_URL"] %>
