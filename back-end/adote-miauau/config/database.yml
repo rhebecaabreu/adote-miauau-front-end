@@ -53,3 +53,4 @@ production:
   database: adote_miauau_production
   username: adote_miauau
   password: <%= ENV["ADOTE_MIAUAU_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>

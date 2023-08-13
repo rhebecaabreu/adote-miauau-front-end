@@ -6,6 +6,7 @@ import PetCard, { CardBody, CardMedia } from "components/atoms/PetCard";
 import styled from "styled-components";
 import { FaRegHeart } from "react-icons/fa";
 import { CgGenderFemale, CgGenderMale } from "react-icons/cg";
+import PropTypes from "prop-types";
 
 const UserTitle = styled.p`
   font-size: 12px;
@@ -58,8 +59,8 @@ const PetsGrid = ({ pets }) => {
         {pets.map((pet) => (
           <PetCard key={pet.id}>
             <CardBody>
-              <CardMedia image={pet.image} />
-              <UserTitle>{pet.user.name}</UserTitle>
+              <CardMedia image={pet.pet.images[0]} />
+              <UserTitle>{pet.user.full_name}</UserTitle>
               <Description>{pet.title}</Description>
               <CardFooter>
                 <PublicationInfos>
@@ -69,7 +70,7 @@ const PetsGrid = ({ pets }) => {
                   <p>{pet.created_at}</p>
                 </PublicationInfos>
                 <Actions>
-                  {pet.characteristics.sex === "female" ? (
+                  {pet.pet.sex === "female" ? (
                     <Button color="danger" variant="link">
                       <CgGenderFemale />
                     </Button>
@@ -96,7 +97,7 @@ PetsGrid.defaultProps = {
 };
 
 PetsGrid.propTypes = {
-  pets: Array,
+  pets: PropTypes.array,
 };
 
 export default PetsGrid;
