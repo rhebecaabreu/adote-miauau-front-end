@@ -37,7 +37,7 @@ const PublicationInfo = ({ publication, setPublication }) => {
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
       });
-  }, [categories]);
+  }, []);
 
   return (
     <Root>

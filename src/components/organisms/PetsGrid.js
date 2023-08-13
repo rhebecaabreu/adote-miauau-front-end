@@ -59,7 +59,7 @@ const PetsGrid = ({ pets }) => {
         {pets.map((pet) => (
           <PetCard key={pet.id}>
             <CardBody>
-              <CardMedia image={pet.pet.images[0]} />
+              <CardMedia image={pet.pet.images[0]?.file_url} />
               <UserTitle>{pet.user.full_name}</UserTitle>
               <Description>{pet.title}</Description>
               <CardFooter>

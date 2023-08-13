@@ -7,6 +7,7 @@ import PetInfo from "../molecules/form/PetInfo";
 import PetInfoHealth from "../molecules/form/PetInfoHealth";
 import AddressInfo from "../molecules/form/AddressInfo";
 import api from "services/api";
+import Cookies from "js-cookie";
 
 const Root = styled.div`
   display: flex;
@@ -41,8 +42,15 @@ const FormFooter = ({ publication }) => {
   const { isLastStep, isFirstStep, previousStep, nextStep } = useWizard();
 
   const sendPublication = () => {
+    const headers = {
+      "USER-EMAIL": Cookies.get("email"),
+      "USER-TOKEN": Cookies.get("authentication_token"),
+    };
+
     api
-      .post("/publications", publication)
+      .post("/publications", publication, {
+        headers: headers,
+      })
       .then((response) => console.log(response.data))
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);

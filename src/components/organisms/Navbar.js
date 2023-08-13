@@ -80,6 +80,9 @@ const Navbar = ({ children }) => (
           <Button color="primary" variant="primary">
             Meu perfil
           </Button>
+          <Button as={Link} to="/entrar" color="primary" variant="primary">
+            Entrar
+          </Button>
         </Menu>
       </Content>
     </Container>
