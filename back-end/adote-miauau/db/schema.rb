@@ -41,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_12_230926) do
   end
 
   create_table "pets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "type"
+    t.string "kind"
     t.string "age"
     t.boolean "vaccinated"
     t.boolean "castrated"
@@ -72,7 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_12_230926) do
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
-    t.string "type"
+    t.string "role"
     t.string "permissions"
     t.string "full_name"
     t.string "user_name"
@@ -80,6 +80,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_12_230926) do
     t.string "document"
     t.string "description"
     t.string "business_name"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "authentication_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
