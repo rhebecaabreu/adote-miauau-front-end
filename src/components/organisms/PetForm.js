@@ -6,7 +6,7 @@ import PublicationInfo from "../molecules/form/PublicationInfo";
 import PetInfo from "../molecules/form/PetInfo";
 import PetInfoHealth from "../molecules/form/PetInfoHealth";
 import AddressInfo from "../molecules/form/AddressInfo";
-import SuccessPage from "../molecules/form/SuccessPage";
+import api from "services/api";
 
 const Root = styled.div`
   display: flex;
@@ -37,24 +37,44 @@ const FormHeader = () => {
   );
 };
 
-const FormFooter = () => {
-  const { previousStep, nextStep } = useWizard();
+const FormFooter = ({ publication }) => {
+  const { isLastStep, isFirstStep, previousStep, nextStep } = useWizard();
+
+  const sendPublication = () => {
+    api
+      .post("/publications", publication)
+      .then((response) => console.log(response.data))
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  };
+
+  const handleNext = () => {
+    if (isLastStep) {
+      sendPublication();
+    } else {
+      nextStep();
+    }
+  };
 
   return (
     <FooterRoot>
+      {!isFirstStep && (
+        <FooterButton
+          onClick={() => previousStep()}
+          color="primary"
+          variant="primary"
+        >
+          Voltar
+        </FooterButton>
+      )}
+
       <FooterButton
-        onClick={() => previousStep()}
+        onClick={() => handleNext()}
         color="primary"
         variant="primary"
       >
-        Voltar
-      </FooterButton>
-      <FooterButton
-        onClick={() => nextStep()}
-        color="primary"
-        variant="primary"
-      >
-        Próximo
+        {isLastStep ? "Publicar" : "Próximo"}
       </FooterButton>
     </FooterRoot>
   );
@@ -63,7 +83,11 @@ const FormFooter = () => {
 const PetForm = ({ publication, setPublication }) => {
   return (
     <Root>
-      <Wizard startIndex={0} header={<FormHeader />} footer={<FormFooter />}>
+      <Wizard
+        startIndex={0}
+        header={<FormHeader />}
+        footer={<FormFooter publication={publication} />}
+      >
         <PublicationInfo
           publication={publication}
           setPublication={setPublication}
