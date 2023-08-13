@@ -42,7 +42,16 @@ const PetInfo = ({ publication, setPublication }) => {
 
   const handleFileChange = (event) => {
     const file = event.target.files;
-    setSelectedFile((prevFiles) => [...prevFiles, ...file]);
+    console.log(event.target.files);
+    setPublication((prev) => ({
+      ...prev,
+      pet: {
+        ...prev.pet,
+        images: [...prev.pet.images, ...file],
+      },
+    }));
+
+    console.log(publication);
   };
 
   const handlePetChange = (e) => {
@@ -63,7 +72,9 @@ const PetInfo = ({ publication, setPublication }) => {
       <UploadArea>
         <ImageUpload
           image={
-            selectedFile[0] ? URL.createObjectURL(selectedFile[0]) : UploadIcon
+            publication.pet.images[0]
+              ? URL.createObjectURL(publication.pet.images[0])
+              : UploadIcon
           }
           alt="Select File"
           onClick={handleImageClick}
@@ -79,7 +90,9 @@ const PetInfo = ({ publication, setPublication }) => {
 
         <ImageUpload
           image={
-            selectedFile[1] ? URL.createObjectURL(selectedFile[1]) : UploadIcon
+            publication.pet.images[1]
+              ? URL.createObjectURL(publication.pet.images[1])
+              : UploadIcon
           }
           alt="Select File"
           onClick={handleImageClick}
@@ -95,7 +108,9 @@ const PetInfo = ({ publication, setPublication }) => {
 
         <ImageUpload
           image={
-            selectedFile[2] ? URL.createObjectURL(selectedFile[2]) : UploadIcon
+            publication.pet.images[2]
+              ? URL.createObjectURL(publication.pet.images[2])
+              : UploadIcon
           }
           alt="Select File"
           onClick={handleImageClick}

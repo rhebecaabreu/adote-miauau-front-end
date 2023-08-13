@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://147.182.229.211/api",
+  baseURL: "http://api.adotemiauau.com.br/api",
 });
 
 api.defaults.headers.common["Content-Type"] = "application/json";
