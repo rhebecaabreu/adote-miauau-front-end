@@ -50,7 +50,7 @@ test:
 #
 production:
   <<: *default
-  database: adote_miauau_production
-  username: adote_miauau
-  password: <%= ENV["ADOTE_MIAUAU_DATABASE_PASSWORD"] %>
-  url: <%= ENV["DATABASE_URL"] %>
+  database: railway
+  username: root
+  password: <%= ENV["MYSQLPASSWORD"] %>
+  url: <%= ENV["MYSQL_URL"] %>
