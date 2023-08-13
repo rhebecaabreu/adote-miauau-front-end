@@ -7,7 +7,7 @@ Rails.application.routes.draw do
         post :sign_in, controller: :sessions, action: :create
       end
     end
-
+    resources :categories, only: [:index]
     resources :publications
   end
 end

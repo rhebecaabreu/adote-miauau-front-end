@@ -15,7 +15,7 @@ module TokenAuthenticatable
   end
 
   def token_match?(token)
-    BCrypt::Password.new(authentication_token) == token
+    BCrypt::Password.new(authentication_token) === token
   end
 
   private

@@ -5,7 +5,7 @@ class BaseUploader < CarrierWave::Uploader::Base
     "uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def extension_whitelist
+  def extension_allowlist
     %w[jpg jpeg png]
   end
 

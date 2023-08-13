@@ -36,6 +36,10 @@ gem 'mini_magick'
 gem 'mimemagic'
 gem 'rmagick'
 
+gem 'active_model_serializers'
+
+gem 'byebug'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
