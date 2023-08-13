@@ -4,9 +4,13 @@ import { styled } from "styled-components";
 
 const Root = styled.div`
   margin-bottom: 16px;
+
+  button {
+    text-transform: lowercase;
+  }
 `;
 
-const FormButtonGroup = ({ buttons, onChange }) => {
+const FormButtonGroup = ({ buttons, name, onChange }) => {
   const [active, setActive] = useState(0);
 
   const handleClick = (event, id) => {
@@ -16,15 +20,16 @@ const FormButtonGroup = ({ buttons, onChange }) => {
 
   return (
     <Root>
-      {buttons.map((buttonLabel, i) => (
+      {buttons.map((button, i) => (
         <Button
           type="button"
-          key={i}
           clicked={active === i}
-          name={buttonLabel}
+          key={button.name}
+          name={name}
+          value={button.id}
           onClick={(event) => handleClick(event, i)}
         >
-          {buttonLabel}
+          {button.name}
         </Button>
       ))}
     </Root>

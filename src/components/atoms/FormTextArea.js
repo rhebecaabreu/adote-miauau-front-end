@@ -12,6 +12,9 @@ const StyledTextArea = styled.textarea`
   height: 80px;
   width: 100%;
   margin-bottom: 30px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  padding: 4px 6px;
 `;
 
 const FormTextArea = ({ value, placeholder, name, onChange }) => {

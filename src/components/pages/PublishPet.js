@@ -7,18 +7,26 @@ import MotherPet from "../../assets/MotherPet.svg";
 const initialFormValues = {
   title: "",
   description: "",
-  publication_type: "",
-  images: [],
+  category_id: 1,
   pet: {
-    type: "",
+    kind: "",
     sex: "",
     age: "",
-    size: "",
-    vaccinated: "",
-    castrated: "",
-    vermifugated: "",
+    vaccinated: false,
+    castrated: false,
+    vermifugated: false,
     coat_color: "",
-    race: "",
+    status: "",
+    size: "",
+    images: [],
+  },
+  address: {
+    state: "",
+    city: "",
+    cep: "",
+    number: "",
+    street: "",
+    complement: "",
   },
 };
 
@@ -42,11 +50,14 @@ const GridFill = styled(Grid)`
 `;
 
 const PublishPet = () => {
-  const [pet, setPet] = useState(initialFormValues);
+  const [publication, setPublication] = useState(initialFormValues);
   return (
     <Root>
       <GridFill md={2} proportion={"1fr"}>
-        <PetForm pet={pet} setPet={setPet}></PetForm>
+        <PetForm
+          publication={publication}
+          setPublication={setPublication}
+        ></PetForm>
         <Image image={MotherPet} />
       </GridFill>
     </Root>

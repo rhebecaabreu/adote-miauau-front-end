@@ -32,24 +32,24 @@ const ImageUpload = styled.div`
   height: 150px;
 `;
 
-const AddressInfo = () => {
-  const [inputValue, setInputValue] = useState({ title: "", price: "" });
-  const { title } = inputValue;
-
+const AddressInfo = ({ publication, setPublication }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
-    // setInputValue((prev) => ({
-    //   ...prev,
-    //   [name]: value,
-    // }));
-    // console.log(inputValue);
+    setPublication((prev) => ({
+      ...prev,
+      address: {
+        ...prev.address,
+        [name]: value,
+      },
+    }));
   };
 
   return (
     <Root>
       <FormLabel>Estado</FormLabel>
       <FormSelect
+        name={"state"}
+        onChange={handleChange}
         options={[
           { label: "MS", value: "ms" },
           { label: "MT", value: "mt" },
@@ -60,6 +60,8 @@ const AddressInfo = () => {
 
       <FormLabel>Cidade</FormLabel>
       <FormSelect
+        name={"city"}
+        onChange={handleChange}
         options={[
           { label: "Campo Grande", value: "cg" },
           { label: "São Paulo", value: "SP" },
@@ -71,7 +73,7 @@ const AddressInfo = () => {
       <FormLabel>CEP</FormLabel>
       <FormInput
         type="text"
-        value={title}
+        value={publication.address.cep}
         placeholder=""
         name="cep"
         onChange={handleChange}
@@ -80,7 +82,7 @@ const AddressInfo = () => {
       <FormLabel>Rua</FormLabel>
       <FormInput
         type="text"
-        value={title}
+        value={publication.address.street}
         placeholder=""
         name="street"
         onChange={handleChange}
@@ -88,7 +90,7 @@ const AddressInfo = () => {
       <FormLabel>Número</FormLabel>
       <FormInput
         type="text"
-        value={title}
+        value={publication.address.number}
         placeholder=""
         name="number"
         onChange={handleChange}
@@ -96,9 +98,9 @@ const AddressInfo = () => {
       <FormLabel>Complemento</FormLabel>
       <FormInput
         type="text"
-        value={title}
+        value={publication.address.complement}
         placeholder=""
-        name="compl"
+        name="complement"
         onChange={handleChange}
       />
     </Root>

@@ -12,7 +12,11 @@ const Root = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px 40px;
+  padding: 10px 40px;
+
+  h1 {
+    color: ${(props) => props.theme.colors.primary.label};
+  }
 `;
 
 const FooterRoot = styled.div`
@@ -56,14 +60,30 @@ const FormFooter = () => {
   );
 };
 
-const PetForm = ({ pet, setPet }) => {
+const PetForm = ({ publication, setPublication }) => {
   return (
     <Root>
       <Wizard startIndex={0} header={<FormHeader />} footer={<FormFooter />}>
-        <PublicationInfo number={1} />
-        <PetInfo number={2} />
-        <PetInfoHealth number={3} />
-        <AddressInfo number={4} />
+        <PublicationInfo
+          publication={publication}
+          setPublication={setPublication}
+          number={1}
+        />
+        <PetInfo
+          publication={publication}
+          setPublication={setPublication}
+          number={2}
+        />
+        <PetInfoHealth
+          number={3}
+          publication={publication}
+          setPublication={setPublication}
+        />
+        <AddressInfo
+          number={4}
+          publication={publication}
+          setPublication={setPublication}
+        />
       </Wizard>
     </Root>
   );

@@ -12,11 +12,18 @@ const StyledSelect = styled.select`
   height: 40px;
   width: 100%;
   margin-bottom: 30px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  padding: 4px 6px;
+
+  option {
+    font-family: "Poppins", sans-serif;
+  }
 `;
 
-const FormSelect = ({ value, options, onChange }) => {
+const FormSelect = ({ name, value, options, onChange }) => {
   return (
-    <StyledSelect value={value} onChange={onChange}>
+    <StyledSelect name={name} value={value} onChange={onChange}>
       {options.map((option, i) => (
         <option key={i} value={option.value}>
           {option.label}

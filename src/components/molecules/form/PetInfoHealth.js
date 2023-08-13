@@ -17,64 +17,70 @@ const Root = styled.div`
   }
 `;
 
-const UploadArea = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const ImageUpload = styled.div`
-  background-image: url(${(props) => props.image});
-  background-position: center center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  font-size: 120px;
-  width: 120px;
-  height: 150px;
-`;
-
-const PetHealth = () => {
-  const [inputValue, setInputValue] = useState({ title: "", price: "" });
-  const { title } = inputValue;
-
-  const handleChange = (e) => {
+const PetHealth = ({ setPublication }) => {
+  const handlePetChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
-    // setInputValue((prev) => ({
-    //   ...prev,
-    //   [name]: value,
-    // }));
-    // console.log(inputValue);
+    setPublication((prev) => ({
+      ...prev,
+      pet: {
+        ...prev.pet,
+        [name]: value,
+      },
+    }));
   };
 
   return (
     <Root>
       <FormLabel>O pet foi vacinado?</FormLabel>
-      <FormButtonGroup buttons={["sim", "não"]} onChange={handleChange} />
+      <FormButtonGroup
+        name={"vaccinated"}
+        buttons={[
+          { id: "true", name: "sim" },
+          { id: "false", name: "não" },
+        ]}
+        onChange={handlePetChange}
+      />
 
       <FormLabel>O pet foi castrado?</FormLabel>
-      <FormButtonGroup buttons={["sim", "não"]} onChange={handleChange} />
+      <FormButtonGroup
+        name={"castrated"}
+        buttons={[
+          { id: "true", name: "sim" },
+          { id: "false", name: "não" },
+        ]}
+        onChange={handlePetChange}
+      />
 
       <FormLabel>O pet foi vermifugado?</FormLabel>
-      <FormButtonGroup buttons={["sim", "não"]} onChange={handleChange} />
+      <FormButtonGroup
+        name={"vermifugated"}
+        buttons={[
+          { id: "true", name: "sim" },
+          { id: "false", name: "não" },
+        ]}
+        onChange={handlePetChange}
+      />
 
       <FormLabel>Cor da pelagem</FormLabel>
       <FormSelect
+        name={"coat_color"}
+        onChange={handlePetChange}
         options={[
-          { label: "branca", value: "water" },
-          { label: "preta", value: "beer" },
-          { label: "laranja", value: "wine" },
-          { label: "caramelo", value: "win11e" },
+          { label: "branca", value: "branca" },
+          { label: "preta", value: "preta" },
+          { label: "laranja", value: "laranja" },
+          { label: "caramelo", value: "caramelo" },
         ]}
       ></FormSelect>
 
-      <FormLabel>Raça (opcional)</FormLabel>
+      {/* <FormLabel>Raça (opcional)</FormLabel>
       <FormInput
         type="text"
         value={title}
         placeholder=""
         name="raca"
-        onChange={handleChange}
-      ></FormInput>
+        onChange={handlePetChange}
+      ></FormInput> */}
     </Root>
   );
 };
