@@ -8,6 +8,11 @@ import api from "services/api";
 const Root = styled.section`
   display: flex;
   flex-direction: column;
+  height: 85vh;
+`;
+
+const HomeGrid = styled(Grid)`
+  height: 100%;
 `;
 
 const Home = () => {
@@ -25,10 +30,10 @@ const Home = () => {
 
   return (
     <Root>
-      <Grid md={1} proportion={"1fr 6fr"}>
+      <HomeGrid md={1} proportion={"1fr 6fr"}>
         <Sidebar></Sidebar>
         <PetsGrid pets={pets}></PetsGrid>
-      </Grid>
+      </HomeGrid>
     </Root>
   );
 };
