@@ -34,7 +34,6 @@ const ImageUpload = styled.div`
 
 const PetInfo = ({ publication, setPublication }) => {
   const fileInputRef = useRef(null);
-  const [selectedFile, setSelectedFile] = useState([]);
 
   const handleImageClick = () => {
     fileInputRef.current.click();
@@ -45,10 +44,7 @@ const PetInfo = ({ publication, setPublication }) => {
     console.log(event.target.files);
     setPublication((prev) => ({
       ...prev,
-      pet: {
-        ...prev.pet,
-        images: [...prev.pet.images, ...file],
-      },
+      images: [...prev.images, ...file],
     }));
 
     console.log(publication);
@@ -72,8 +68,8 @@ const PetInfo = ({ publication, setPublication }) => {
       <UploadArea>
         <ImageUpload
           image={
-            publication.pet.images[0]
-              ? URL.createObjectURL(publication.pet.images[0])
+            publication.images[0]
+              ? URL.createObjectURL(publication.images[0])
               : UploadIcon
           }
           alt="Select File"
@@ -90,8 +86,8 @@ const PetInfo = ({ publication, setPublication }) => {
 
         <ImageUpload
           image={
-            publication.pet.images[1]
-              ? URL.createObjectURL(publication.pet.images[1])
+            publication.images[1]
+              ? URL.createObjectURL(publication.images[1])
               : UploadIcon
           }
           alt="Select File"
@@ -108,8 +104,8 @@ const PetInfo = ({ publication, setPublication }) => {
 
         <ImageUpload
           image={
-            publication.pet.images[2]
-              ? URL.createObjectURL(publication.pet.images[2])
+            publication.images[2]
+              ? URL.createObjectURL(publication.images[2])
               : UploadIcon
           }
           alt="Select File"

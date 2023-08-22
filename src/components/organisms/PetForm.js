@@ -47,8 +47,23 @@ const FormFooter = ({ publication }) => {
       "USER-TOKEN": Cookies.get("authentication_token"),
     };
 
+    const formData = new FormData();
+    for (const key in publication) {
+      if (key === "pet") {
+        formData.append("pet", JSON.stringify(publication[key]));
+      } else if (key === "images") {
+        publication.images.forEach((file, index) => {
+          formData.append(`images[${index}]`, file);
+        });
+      } else if (key === "address") {
+        formData.append("address", JSON.stringify(publication[key]));
+      } else {
+        formData.append(key, publication[key]);
+      }
+    }
+
     api
-      .post("/publications", publication, {
+      .post("/publications", formData, {
         headers: headers,
       })
       .then((response) => console.log(response.data))

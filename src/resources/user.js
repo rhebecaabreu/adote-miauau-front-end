@@ -1,6 +1,6 @@
 import api from "services/api";
 import Cookies from "js-cookie";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 const useSignIn = () => {
   const [data, setData] = useState({});

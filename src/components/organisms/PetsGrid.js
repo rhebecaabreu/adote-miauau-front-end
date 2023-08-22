@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import Button from "components/atoms/Button";
 import Grid from "components/atoms/Grid";
 import PetCard, { CardBody, CardMedia } from "components/atoms/PetCard";

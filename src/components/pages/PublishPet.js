@@ -8,6 +8,7 @@ const initialFormValues = {
   title: "",
   description: "",
   category_id: 1,
+  images: [],
   pet: {
     kind: "",
     sex: "",
@@ -18,7 +19,6 @@ const initialFormValues = {
     coat_color: "",
     status: "",
     size: "",
-    images: [],
   },
   address: {
     state: "",

@@ -36,7 +36,7 @@ const LoginForm = styled.div`
 
 const PublishPet = () => {
   const [user, setUser] = useState();
-  const { error, data, signIn } = useSignIn();
+  const { data, signIn } = useSignIn();
 
   useEffect(() => {
     if (data.email) {
