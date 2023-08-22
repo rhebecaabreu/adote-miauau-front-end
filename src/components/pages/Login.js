@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Grid from "components/atoms/Grid";
 import MotherPet from "../../assets/MotherPet.svg";
-import api from "services/api";
 import FormLabel from "components/atoms/FormLabel";
 import FormInput from "components/atoms/FormInput";
 import Button from "components/atoms/Button";
-import Cookies from "js-cookie";
+import useSignIn from "resources/user";
 
 const Image = styled.div`
   background-image: url(${(props) => props.image});
@@ -36,22 +35,14 @@ const LoginForm = styled.div`
 `;
 
 const PublishPet = () => {
-  const [user, setUser] = useState({
-    email: "rhebecaabreu@gmail.com",
-    password: "secret123",
-  });
+  const [user, setUser] = useState();
+  const { error, data, signIn } = useSignIn();
 
-  const signIn = () => {
-    api
-      .post("/users/sign_in", user)
-      .then((response) => {
-        Cookies.set("email", response.data.email);
-        Cookies.set("authentication_token", response.data.authentication_token);
-      })
-      .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
-      });
-  };
+  useEffect(() => {
+    if (data.email) {
+      window.location = "/";
+    }
+  }, [data]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -69,7 +60,6 @@ const PublishPet = () => {
           <FormLabel>E-mail</FormLabel>
           <FormInput
             type="text"
-            value={user.email}
             placeholder=""
             name="email"
             onChange={handleChange}
@@ -77,12 +67,16 @@ const PublishPet = () => {
           <FormLabel>Password</FormLabel>
           <FormInput
             type="password"
-            value={user.password}
             placeholder=""
             name="password"
             onChange={handleChange}
           ></FormInput>
-          <Button type="submit" onClick={signIn} color="dark" variant="primary">
+          <Button
+            type="submit"
+            onClick={() => signIn(user)}
+            color="dark"
+            variant="primary"
+          >
             Entrar
           </Button>
         </LoginForm>

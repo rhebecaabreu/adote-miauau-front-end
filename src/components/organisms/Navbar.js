@@ -4,6 +4,7 @@ import Container from "components/atoms/Container";
 import Miauau from "../../assets/MiauauLogo.svg";
 import Button from "components/atoms/Button";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Root = styled.header`
   position: relative;
@@ -17,6 +18,7 @@ const Root = styled.header`
     background-blend-mode: overlay;
   `}
 `;
+
 const Menu = styled.div`
   display: flex;
 
@@ -59,34 +61,50 @@ const Content = styled.div`
   }
 `;
 
-const Navbar = ({ children }) => (
-  <Root data-testid="navbar">
-    <Container>
-      <Content>
-        <Logo image={Miauau} />
-        <Menu>
-          <Button as={Link} to="/" color="default" variant="default">
-            Início
-          </Button>
-          <Button as={Link} to="/sobre" color="default" variant="default">
-            Sobre o Miauau
-          </Button>
-          <Button as={Link} to="/publicar" color="primary" variant="primary">
-            Publicar pet
-          </Button>
-          <Button as={Link} to="/favoritos" color="primary" variant="primary">
-            Favoritos
-          </Button>
-          <Button color="primary" variant="primary">
-            Meu perfil
-          </Button>
-          <Button as={Link} to="/entrar" color="primary" variant="primary">
-            Entrar
-          </Button>
-        </Menu>
-      </Content>
-    </Container>
-  </Root>
-);
+const Navbar = ({ children }) => {
+  const auth = Cookies.get("authentication_token");
+
+  return (
+    <Root data-testid="navbar">
+      <Container>
+        <Content>
+          <Logo image={Miauau} />
+          <Menu>
+            <Button as={Link} to="/" color="default" variant="default">
+              Início
+            </Button>
+            <Button as={Link} to="/sobre" color="default" variant="default">
+              Sobre o Miauau
+            </Button>
+            <Button as={Link} to="/publicar" color="primary" variant="primary">
+              Publicar pet
+            </Button>
+            {auth && (
+              <>
+                <Button
+                  as={Link}
+                  to="/favoritos"
+                  color="primary"
+                  variant="primary"
+                >
+                  Favoritos
+                </Button>
+
+                <Button as={Link} color="primary" variant="primary">
+                  Meu perfil
+                </Button>
+              </>
+            )}
+            {!auth && (
+              <Button as={Link} to="/entrar" color="primary" variant="primary">
+                Entrar
+              </Button>
+            )}
+          </Menu>
+        </Content>
+      </Container>
+    </Root>
+  );
+};
 
 export default Navbar;
