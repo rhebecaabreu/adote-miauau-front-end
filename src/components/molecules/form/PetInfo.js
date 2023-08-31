@@ -20,7 +20,7 @@ const Root = styled.div`
 const UploadArea = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
 `;
 
 const ImageUpload = styled.div`
@@ -31,6 +31,7 @@ const ImageUpload = styled.div`
   font-size: 120px;
   width: 120px;
   height: 150px;
+  cursor: pointer;
 `;
 
 const PetInfo = ({ publication, setPublication }) => {
