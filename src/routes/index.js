@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import Home from "../components/pages/Home";
 import PublishPet from "../components/pages/PublishPet";
 import Login from "../components/pages/Login";
+import SuccessPage from "components/pages/SuccessPage";
 
 const AppRoutes = () => {
   const auth = Cookies.get("authentication_token");
@@ -20,6 +21,10 @@ const AppRoutes = () => {
       <Route
         path="/entrar"
         element={auth ? <Navigate to={{ pathname: "/" }} /> : <Login />}
+      />
+      <Route
+        path="/publicar/sucesso"
+        element={auth ? <SuccessPage /> : <Login />}
       />
       {/* <Route path="*" element={<Error404 />} /> */}
     </Routes>

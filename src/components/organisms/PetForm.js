@@ -66,7 +66,7 @@ const FormFooter = ({ publication }) => {
       .post("/publications", formData, {
         headers: headers,
       })
-      .then((response) => console.log(response.data))
+      .then((response) => (window.location = "/publicar/sucesso"))
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
       });

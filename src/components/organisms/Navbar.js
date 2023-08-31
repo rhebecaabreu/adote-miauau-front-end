@@ -1,10 +1,13 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { FaHeart, FaUserCircle } from "react-icons/fa";
 import Container from "components/atoms/Container";
 import Miauau from "../../assets/MiauauLogo.svg";
 import Button from "components/atoms/Button";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import { TfiPlus } from "react-icons/tfi";
+import { SlArrowDown } from "react-icons/sl";
 
 const Root = styled.header`
   position: relative;
@@ -27,6 +30,8 @@ const Menu = styled.div`
   }
 `;
 
+const FavoriteIcon = styled(FaHeart)``;
+
 const Logo = styled.div`
   display: flex;
   width: 230px;
@@ -42,6 +47,15 @@ const Content = styled.div`
   justify-content: space-between;
   padding: 0 20px;
 
+  svg {
+    margin-right: 8px;
+    font-size: 20px;
+
+    &:last-child {
+      margin-left: 8px;
+    }
+  }
+
   p,
   li {
     font-size: 20px;
@@ -51,6 +65,12 @@ const Content = styled.div`
   ul {
     list-style: none;
     padding-left: 0;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   li {
@@ -77,7 +97,7 @@ const Navbar = ({ children }) => {
               Sobre o Miauau
             </Button>
             <Button as={Link} to="/publicar" color="primary" variant="primary">
-              Publicar pet
+              <TfiPlus /> Publicar pet
             </Button>
             {auth && (
               <>
@@ -87,11 +107,11 @@ const Navbar = ({ children }) => {
                   color="primary"
                   variant="primary"
                 >
-                  Favoritos
+                  <FavoriteIcon /> Favoritos
                 </Button>
 
                 <Button as={Link} color="primary" variant="primary">
-                  Meu perfil
+                  <FaUserCircle /> Meu perfil <SlArrowDown />
                 </Button>
               </>
             )}

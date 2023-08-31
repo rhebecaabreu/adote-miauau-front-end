@@ -23,7 +23,7 @@ const FormButtonGroup = ({ buttons, name, onChange }) => {
       {buttons.map((button, i) => (
         <Button
           type="button"
-          clicked={active === i}
+          clicked={`${active === i}`}
           key={button.name}
           name={name}
           value={button.id}

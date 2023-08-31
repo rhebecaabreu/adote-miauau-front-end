@@ -20,6 +20,7 @@ const Root = styled.div`
 const UploadArea = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 `;
 
 const ImageUpload = styled.div`
@@ -78,6 +79,7 @@ const PetInfo = ({ publication, setPublication }) => {
         <input
           multiple
           type="file"
+          hidden
           onChange={handleFileChange}
           accept=".jpeg, .jpg, .png, image/jpeg, image/jpg, image/png"
           ref={fileInputRef}
@@ -96,6 +98,7 @@ const PetInfo = ({ publication, setPublication }) => {
         <input
           multiple
           type="file"
+          hidden
           onChange={handleFileChange}
           accept=".jpeg, .jpg, .png, image/jpeg, image/jpg, image/png"
           ref={fileInputRef}
@@ -114,6 +117,7 @@ const PetInfo = ({ publication, setPublication }) => {
         <input
           multiple
           type="file"
+          hidden
           onChange={handleFileChange}
           accept=".jpeg, .jpg, .png, image/jpeg, image/jpg, image/png"
           ref={fileInputRef}

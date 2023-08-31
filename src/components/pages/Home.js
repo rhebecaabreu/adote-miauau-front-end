@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 import Grid from "components/atoms/Grid";
 import Sidebar from "../organisms/Sidebar";
 import PetsGrid from "components/organisms/PetsGrid";
-import styled from "styled-components";
 import api from "services/api";
 
 const Root = styled.section`

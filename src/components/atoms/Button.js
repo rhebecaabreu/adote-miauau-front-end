@@ -83,10 +83,10 @@ const Button = styled.button`
   padding: 12px 36px;
   cursor: pointer;
   background-color: ${(props) =>
-    props.clicked ? props.theme.colors.primary.main : getMainColor};
+    isClicked(props) ? props.theme.colors.primary.main : getMainColor};
   border: none;
   color: ${(props) =>
-    props.clicked ? props.theme.colors.primary.light : getColorText};
+    isClicked(props) ? props.theme.colors.primary.light : getColorText};
   display: inline-block;
   text-decoration: none;
   border-radius: 30px;
@@ -104,21 +104,26 @@ const Button = styled.button`
 
 const ButtonDefault = styled(Button)`
   background-color: ${(props) =>
-    props.clicked ? props.theme.colors.primary.main : "transparent"};
+    isClicked(props) ? props.theme.colors.primary.main : "transparent"};
   color: ${(props) =>
-    props.clicked ? props.theme.colors.primary.light : getDefaultText};
+    isClicked(props) ? props.theme.colors.primary.light : getDefaultText};
+
   &:hover:not(:disabled) {
-    background-color: transparent;
-    color: ${getDarkColor};
+    background-color: ${(props) =>
+      isClicked(props) ? props.theme.colors.primary.dark : "transparent"};
+    color: ${(props) =>
+      isClicked(props) ? props.theme.colors.primary.light : getDarkColor};
   }
 `;
 
+const isClicked = (props) => props.clicked === "true";
+
 const ButtonLink = styled(Button)`
   background-color: ${(props) =>
-    props.clicked ? props.theme.colors.primary.main : "transparent"};
+    isClicked(props) ? props.theme.colors.primary.main : "transparent"};
   border-color: transparent;
   color: ${(props) =>
-    props.clicked ? props.theme.colors.primary.light : getLinkText};
+    isClicked(props) ? props.theme.colors.primary.light : getLinkText};
   padding-left: 0;
   padding-right: 0;
 
@@ -145,7 +150,7 @@ ButtonWrapper.defaultProps = {
   children: undefined,
   color: "default",
   variant: "default",
-  clicked: false,
+  clicked: "false",
 };
 
 ButtonWrapper.propTypes = {
@@ -153,7 +158,7 @@ ButtonWrapper.propTypes = {
   children: PropTypes.node,
   color: PropTypes.oneOf(Object.values(ButtonColors)),
   variant: PropTypes.oneOf(Object.values(ButtonsVariants)),
-  clicked: PropTypes.oneOfType(PropTypes.any, PropTypes.bool),
+  clicked: PropTypes.any,
 };
 
 export default ButtonWrapper;
