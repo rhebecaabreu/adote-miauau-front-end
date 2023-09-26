@@ -1,4 +1,5 @@
 import React from "react";
+import { ToastContainer } from "react-toast";
 
 import ThemeProvider from "styles/ThemeProvider";
 import GlobalStyle from "styles/GlobalStyle";
@@ -11,6 +12,7 @@ function App() {
       <GlobalStyle />
       <Navbar />
       <Routes />
+      <ToastContainer delay={3000} position="top-right" />
     </ThemeProvider>
   );
 }

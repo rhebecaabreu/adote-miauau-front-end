@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "components/atoms/Button";
+import { toast } from "react-toast";
 import { Wizard, useWizard } from "react-use-wizard";
 import PublicationInfo from "../molecules/form/PublicationInfo";
 import PetInfo from "../molecules/form/PetInfo";
@@ -39,7 +40,8 @@ const FormHeader = () => {
 };
 
 const FormFooter = ({ publication }) => {
-  const { isLastStep, isFirstStep, previousStep, nextStep } = useWizard();
+  const { isLastStep, isFirstStep, previousStep, nextStep, activeStep } =
+    useWizard();
 
   const sendPublication = () => {
     const headers = {
@@ -72,9 +74,36 @@ const FormFooter = ({ publication }) => {
       });
   };
 
+  const errorToast = (message) => {
+    const defaultMessage = "Você deve preencher todos os campos!";
+    toast.error(message || defaultMessage, {
+      position: "top-right",
+    });
+  };
+
+  const isEmptyObject = (value) =>
+    Object.values(value).some((element) => element === "");
+
   const handleNext = () => {
     if (isLastStep) {
-      sendPublication();
+      if (isEmptyObject(publication.address)) {
+        errorToast();
+      } else {
+        sendPublication();
+      }
+    } else {
+      validateNextStep();
+    }
+  };
+
+  const validateNextStep = () => {
+    if (
+      activeStep === 0 &&
+      (publication.title === "" || publication.description === "")
+    ) {
+      errorToast();
+    } else if (activeStep === 1 && publication.images.length === 0) {
+      errorToast("Você deve adicionar ao menos uma foto do pet!");
     } else {
       nextStep();
     }

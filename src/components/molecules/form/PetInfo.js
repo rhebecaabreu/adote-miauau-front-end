@@ -142,10 +142,10 @@ const PetInfo = ({ publication, setPublication }) => {
         name={"age"}
         onChange={handlePetChange}
         options={[
-          { label: "0 a 6 meses", value: "0 a 6 meses" },
-          { label: "6 meses a 2 anos", value: "6 meses a 2 anos" },
-          { label: "2 anos 5 anos", value: "2 anos 5 anos" },
-          { label: "5 anos ou mais", value: "5 anos ou mais" },
+          { label: "0 a 6 meses", value: "0-6" },
+          { label: "6 meses a 2 anos", value: "6-2" },
+          { label: "2 anos 5 anos", value: "2-5" },
+          { label: "5 anos ou mais", value: "5+" },
         ]}
       ></FormSelect>
 

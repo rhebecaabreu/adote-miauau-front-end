@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Button from "components/atoms/Button";
+import { getAllStates, getStateCities } from "easy-location-br";
 import FormLabel from "components/atoms/FormLabel";
 import FormInput from "components/atoms/FormInput";
-import FormTextArea from "components/atoms/FormTextArea";
-import FormButtonGroup from "components/atoms/FormButtonGroup";
 import FormSelect from "components/atoms/FormSelect";
-import { BsFileImageFill } from "react-icons/bs";
-import UploadIcon from "../../../assets/upload.svg";
 
 const Root = styled.div`
   h6 {
@@ -17,24 +13,15 @@ const Root = styled.div`
   }
 `;
 
-const UploadArea = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const ImageUpload = styled.div`
-  background-image: url(${(props) => props.image});
-  background-position: center center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  font-size: 120px;
-  width: 120px;
-  height: 150px;
-`;
-
 const AddressInfo = ({ publication, setPublication }) => {
+  const [cities, setCities] = useState([]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === "state") {
+      setCities(findCities(value));
+    }
+
     setPublication((prev) => ({
       ...prev,
       address: {
@@ -44,30 +31,49 @@ const AddressInfo = ({ publication, setPublication }) => {
     }));
   };
 
+  const states = () => {
+    const states = [];
+    states.push(defaultItem);
+    getAllStates().forEach((state) => {
+      states.push({
+        label: state.name,
+        value: state.id,
+      });
+    });
+    return states;
+  };
+
+  const defaultItem = {
+    label: "Selecione",
+    value: "",
+  };
+
+  const findCities = (state) => {
+    const cities = [];
+    cities.push(defaultItem);
+    getStateCities(state).forEach((citie) => {
+      cities.push({
+        label: citie.name,
+        value: citie.name,
+      });
+    });
+    return cities;
+  };
+
   return (
     <Root>
       <FormLabel>Estado</FormLabel>
       <FormSelect
         name={"state"}
         onChange={handleChange}
-        options={[
-          { label: "MS", value: "ms" },
-          { label: "MT", value: "mt" },
-          { label: "SP", value: "sp" },
-          { label: "PR", value: "pr" },
-        ]}
+        options={states()}
       ></FormSelect>
 
       <FormLabel>Cidade</FormLabel>
       <FormSelect
         name={"city"}
         onChange={handleChange}
-        options={[
-          { label: "Campo Grande", value: "cg" },
-          { label: "São Paulo", value: "SP" },
-          { label: "Curitiba", value: "PR" },
-          { label: "Cuiabá", value: "MT" },
-        ]}
+        options={cities}
       ></FormSelect>
 
       <FormLabel>CEP</FormLabel>
