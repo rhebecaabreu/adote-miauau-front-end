@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Button from "components/atoms/Button";
 import FormLabel from "components/atoms/FormLabel";
-import FormInput from "components/atoms/FormInput";
-import FormTextArea from "components/atoms/FormTextArea";
 import FormButtonGroup from "components/atoms/FormButtonGroup";
 import FormSelect from "components/atoms/FormSelect";
-import { BsFileImageFill } from "react-icons/bs";
-import UploadIcon from "../../../assets/upload.svg";
 
 const Root = styled.div`
   h6 {
@@ -35,8 +30,8 @@ const PetHealth = ({ setPublication }) => {
       <FormButtonGroup
         name={"vaccinated"}
         buttons={[
-          { id: "true", name: "sim" },
-          { id: "false", name: "não" },
+          { id: true, name: "sim" },
+          { id: false, name: "não" },
         ]}
         onChange={handlePetChange}
       />
@@ -45,8 +40,8 @@ const PetHealth = ({ setPublication }) => {
       <FormButtonGroup
         name={"castrated"}
         buttons={[
-          { id: "true", name: "sim" },
-          { id: "false", name: "não" },
+          { id: true, name: "sim" },
+          { id: false, name: "não" },
         ]}
         onChange={handlePetChange}
       />
@@ -55,8 +50,8 @@ const PetHealth = ({ setPublication }) => {
       <FormButtonGroup
         name={"vermifugated"}
         buttons={[
-          { id: "true", name: "sim" },
-          { id: "false", name: "não" },
+          { id: true, name: "sim" },
+          { id: false, name: "não" },
         ]}
         onChange={handlePetChange}
       />

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Grid from "components/atoms/Grid";
 import Sidebar from "../organisms/Sidebar";
 import PetsGrid from "components/organisms/PetsGrid";
-import api from "services/api";
 
 const Root = styled.section`
   display: flex;
@@ -17,21 +16,11 @@ const HomeGrid = styled(Grid)`
 
 const Home = () => {
   const [pets, setPets] = useState([]);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    api
-      .get("/publications")
-      .then((response) => setPets(response.data))
-      .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
-      });
-  }, []);
 
   return (
     <Root>
       <HomeGrid md={1} proportion={"1fr 6fr"}>
-        <Sidebar></Sidebar>
+        <Sidebar setPets={setPets}></Sidebar>
         <PetsGrid pets={pets}></PetsGrid>
       </HomeGrid>
     </Root>

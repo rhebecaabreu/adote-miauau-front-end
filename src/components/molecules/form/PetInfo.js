@@ -1,12 +1,8 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import Button from "components/atoms/Button";
 import FormLabel from "components/atoms/FormLabel";
-import FormInput from "components/atoms/FormInput";
-import FormTextArea from "components/atoms/FormTextArea";
 import FormButtonGroup from "components/atoms/FormButtonGroup";
 import FormSelect from "components/atoms/FormSelect";
-import { BsFileImageFill } from "react-icons/bs";
 import UploadIcon from "../../../assets/upload.svg";
 
 const Root = styled.div`

@@ -6,6 +6,7 @@ const light = {
     primary: {
       main: "#5669CC",
       dark: "#555CB3",
+      hover: "#4B52A4",
       light: "#F7F5FA",
       text: "#252525",
       textDark: "rgba(0, 0, 0, 0.5)",

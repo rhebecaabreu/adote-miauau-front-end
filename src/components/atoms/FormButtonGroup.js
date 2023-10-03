@@ -4,13 +4,15 @@ import { styled } from "styled-components";
 
 const Root = styled.div`
   margin-bottom: 16px;
-
-  button {
-    text-transform: lowercase;
-  }
 `;
 
-const FormButtonGroup = ({ buttons, name, onChange }) => {
+const FormButtonGroup = ({
+  buttons,
+  name,
+  onChange,
+  color = "primary",
+  variant = "default",
+}) => {
   const [active, setActive] = useState(0);
 
   const handleClick = (event, id) => {
@@ -24,6 +26,8 @@ const FormButtonGroup = ({ buttons, name, onChange }) => {
         <Button
           type="button"
           clicked={`${active === i}`}
+          color={color}
+          variant={variant}
           key={button.name}
           name={name}
           value={button.id}

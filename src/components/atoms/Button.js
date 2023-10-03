@@ -14,6 +14,7 @@ export const ButtonsVariants = {
   default: "default",
   primary: "primary",
   link: "link",
+  group: "group",
 };
 
 const getMainColor = ({ theme, color }) => {
@@ -116,6 +117,33 @@ const ButtonDefault = styled(Button)`
   }
 `;
 
+const ButtonGroup = styled(Button)`
+  font-weight: ${(props) => (isClicked(props) ? 600 : 500)};
+  text-transform: lowercase;
+  transition: 0.4s;
+  padding: 8px 14px;
+  margin-right: 6px;
+  background-color: ${(props) =>
+    isClicked(props)
+      ? props.theme.colors.primary.light
+      : props.theme.colors.primary.dark};
+  color: ${(props) =>
+    isClicked(props)
+      ? props.theme.colors.primary.dark
+      : props.theme.colors.primary.light};
+
+  &:hover:not(:disabled) {
+    background-color: ${(props) =>
+      isClicked(props)
+        ? props.theme.colors.primary.light
+        : props.theme.colors.primary.hover};
+    color: ${(props) =>
+      isClicked(props)
+        ? props.theme.colors.primary.dark
+        : props.theme.colors.primary.light};
+  }
+`;
+
 const isClicked = (props) => props.clicked === "true";
 
 const ButtonLink = styled(Button)`
@@ -140,6 +168,8 @@ const ButtonWrapper = (props) => {
       return <Button {...props} />;
     case ButtonsVariants.link:
       return <ButtonLink {...props} />;
+    case ButtonsVariants.group:
+      return <ButtonGroup {...props} />;
     default:
       return <ButtonDefault {...props} />;
   }

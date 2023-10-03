@@ -70,7 +70,9 @@ const FormFooter = ({ publication }) => {
       })
       .then((response) => (window.location = "/publicar/sucesso"))
       .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
+        errorToast(
+          "Ops! Algo deu errado na publicação, revise seus dados e tente novamente."
+        );
       });
   };
 
