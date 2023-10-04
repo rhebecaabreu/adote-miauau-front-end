@@ -6,13 +6,7 @@ const Root = styled.div`
   margin-bottom: 16px;
 `;
 
-const FormButtonGroup = ({
-  buttons,
-  name,
-  onChange,
-  color = "primary",
-  variant = "default",
-}) => {
+const FormButtonGroup = ({ buttons, name, onChange, variant = "default" }) => {
   const [active, setActive] = useState(0);
 
   const handleClick = (event, id) => {
@@ -26,7 +20,6 @@ const FormButtonGroup = ({
         <Button
           type="button"
           clicked={`${active === i}`}
-          color={color}
           variant={variant}
           key={button.name}
           name={name}

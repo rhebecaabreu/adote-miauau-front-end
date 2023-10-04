@@ -14,7 +14,16 @@ const Root = styled.div`
 
 const PetHealth = ({ setPublication }) => {
   const handlePetChange = (e) => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
+
+    if (
+      name === "vaccinated" ||
+      name === "castrated" ||
+      name === "vermifugated"
+    ) {
+      value = value.toString() === "true";
+    }
+
     setPublication((prev) => ({
       ...prev,
       pet: {

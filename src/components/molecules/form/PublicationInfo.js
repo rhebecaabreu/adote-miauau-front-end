@@ -6,7 +6,11 @@ import FormTextArea from "components/atoms/FormTextArea";
 import FormButtonGroup from "components/atoms/FormButtonGroup";
 import api from "services/api";
 
-const Root = styled.form``;
+const Root = styled.form`
+  button {
+    text-transform: lowercase;
+  }
+`;
 
 const PublicationInfo = ({ publication, setPublication }) => {
   const [categories, setCategories] = useState([]);
@@ -37,7 +41,7 @@ const PublicationInfo = ({ publication, setPublication }) => {
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
       });
-  }, []);
+  }, [categories]);
 
   return (
     <Root>
