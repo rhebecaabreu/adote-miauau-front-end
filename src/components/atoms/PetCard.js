@@ -92,9 +92,15 @@ const StyledCard = styled.div`
   border-radius: 4px;
   border: none;
   overflow: hidden;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
-const Card = ({ children }) => <StyledCard>{children}</StyledCard>;
+const Card = ({ children, onClick }) => (
+  <StyledCard onClick={onClick}>{children}</StyledCard>
+);
 
 Card.defaultProps = {
   children: undefined,

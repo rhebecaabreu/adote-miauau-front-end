@@ -73,6 +73,9 @@ const PetHealth = ({ setPublication }) => {
           { label: "branca", value: "branca" },
           { label: "preta", value: "preta" },
           { label: "laranja", value: "laranja" },
+          { label: "cinza", value: "cinza" },
+          { label: "tricolor", value: "tricolor" },
+          { label: "bicolor", value: "bicolor" },
           { label: "caramelo", value: "caramelo" },
         ]}
       ></FormSelect>

@@ -16,7 +16,7 @@ const initialFormValues = {
     vaccinated: true,
     castrated: true,
     vermifugated: true,
-    coat_color: "white",
+    coat_color: "branca",
     status: "",
     size: "small",
   },

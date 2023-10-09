@@ -19,7 +19,7 @@ const useSignIn = () => {
           setData(response.data);
         })
         .catch((err) => {
-          setError(error);
+          setError(err);
         });
     }
   }, []);
