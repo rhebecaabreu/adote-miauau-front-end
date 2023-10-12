@@ -11,10 +11,12 @@ const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
 
   svg {
     margin-right: 8px;
     vertical-align: middle;
+    pointer-events: none;
   }
 `;
 

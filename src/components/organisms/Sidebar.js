@@ -46,8 +46,7 @@ const FilterLabel = styled.h5`
   padding: 0;
 `;
 
-const Sidebar = ({ setPets }) => {
-  const [categories, setCategories] = useState([]);
+const Sidebar = ({ setPets, categories }) => {
   const [kindFilter, setKindFilter] = useState("cat");
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -57,18 +56,10 @@ const Sidebar = ({ setPets }) => {
   };
 
   const handleCategoryChange = (e) => {
+    console.log(e);
     const { value } = e.target;
     setSelectedCategory(value);
   };
-
-  useEffect(() => {
-    api
-      .get("/categories")
-      .then((response) => setCategories(response.data))
-      .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
-      });
-  }, []);
 
   useEffect(() => {
     api
