@@ -39,18 +39,14 @@ const PetInfo = ({ publication, setPublication }) => {
 
   const handleFileChange = (event) => {
     const file = event.target.files;
-    console.log(event.target.files);
     setPublication((prev) => ({
       ...prev,
       images: [...prev.images, ...file],
     }));
-
-    console.log(publication);
   };
 
   const handlePetChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setPublication((prev) => ({
       ...prev,
       pet: {
@@ -138,10 +134,10 @@ const PetInfo = ({ publication, setPublication }) => {
         name={"age"}
         onChange={handlePetChange}
         options={[
-          { label: "0 a 6 meses", value: "0-6" },
-          { label: "6 meses a 2 anos", value: "6-2" },
-          { label: "2 anos 5 anos", value: "2-5" },
-          { label: "5 anos ou mais", value: "5+" },
+          { label: "0 a 6 meses", value: "0 a 6 meses" },
+          { label: "6 meses a 2 anos", value: "6 meses a 2 anos" },
+          { label: "2 anos 5 anos", value: "2 anos 5 anos" },
+          { label: "5 anos ou mais", value: "5 anos ou mais" },
         ]}
       ></FormSelect>
 

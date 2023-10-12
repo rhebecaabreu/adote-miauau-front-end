@@ -56,7 +56,6 @@ const Sidebar = ({ setPets, categories }) => {
   };
 
   const handleCategoryChange = (e) => {
-    console.log(e);
     const { value } = e.target;
     setSelectedCategory(value);
   };

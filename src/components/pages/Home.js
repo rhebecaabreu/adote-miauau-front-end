@@ -23,7 +23,6 @@ const Home = () => {
     api
       .get("/categories")
       .then((response) => {
-        console.log(response);
         setCategories(response.data);
       })
       .catch((err) => {
