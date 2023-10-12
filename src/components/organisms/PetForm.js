@@ -83,12 +83,17 @@ const FormFooter = ({ publication }) => {
     });
   };
 
-  const isEmptyObject = (value) =>
-    Object.values(value).some((element) => element === "");
+  const hasEmptyObjects = (value) =>
+    Object.values(value)
+      .filter((obj, i) => {
+        if (obj.hasOwnProperty("complement")) delete obj.complement;
+        return obj;
+      })
+      .some((element) => element === "");
 
   const handleNext = () => {
     if (isLastStep) {
-      if (isEmptyObject(publication.address)) {
+      if (hasEmptyObjects(publication.address)) {
         errorToast();
       } else {
         sendPublication();

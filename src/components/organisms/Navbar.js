@@ -115,7 +115,7 @@ const Navbar = ({ children }) => {
             <Button as={Link} to="/" color="default" variant="default">
               Início
             </Button>
-            <Button as={Link} to="/sobre" color="default" variant="default">
+            <Button as={Link} to="/" color="default" variant="default">
               Sobre o Miauau
             </Button>
             <Button as={Link} to="/publicar" color="primary" variant="primary">
@@ -123,12 +123,7 @@ const Navbar = ({ children }) => {
             </Button>
             {auth && (
               <>
-                <Button
-                  as={Link}
-                  to="/favoritos"
-                  color="primary"
-                  variant="primary"
-                >
+                <Button as={Link} to="/" color="primary" variant="primary">
                   <FavoriteIcon /> Favoritos
                 </Button>
 
