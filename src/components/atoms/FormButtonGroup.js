@@ -1,12 +1,30 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import { styled } from "styled-components";
+import { ReactSVG } from "react-svg";
 
 const Root = styled.div`
   margin-bottom: 16px;
 `;
 
-const FormButtonGroup = ({ buttons, name, onChange, variant = "default" }) => {
+const Content = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+`;
+
+const FormButtonGroup = ({
+  buttons,
+  name,
+  onChange,
+  variant = "default",
+  icon = "",
+}) => {
   const [active, setActive] = useState(0);
 
   const handleClick = (event, id) => {
@@ -26,7 +44,10 @@ const FormButtonGroup = ({ buttons, name, onChange, variant = "default" }) => {
           value={button.id}
           onClick={(event) => handleClick(event, i)}
         >
-          {button.name}
+          <Content>
+            {icon && <ReactSVG src={icon} />}
+            {button.name}
+          </Content>
         </Button>
       ))}
     </Root>

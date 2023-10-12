@@ -12,7 +12,7 @@ const initialFormValues = {
   pet: {
     kind: "cat",
     sex: "female",
-    age: "0-5",
+    age: "0 a 6 meses",
     vaccinated: true,
     castrated: true,
     vermifugated: true,

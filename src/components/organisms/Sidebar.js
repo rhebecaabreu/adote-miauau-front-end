@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import FormButtonGroup from "components/atoms/FormButtonGroup";
 import api from "services/api";
+import Adote from "../../assets/Adote.svg";
 
 const Root = styled.div`
   display: flex;
@@ -59,6 +60,7 @@ const Sidebar = ({ setPets }) => {
     const { value } = e.target;
     setSelectedCategory(value);
   };
+
   useEffect(() => {
     api
       .get("/categories")
@@ -85,6 +87,7 @@ const Sidebar = ({ setPets }) => {
           buttons={categories}
           onChange={handleCategoryChange}
           variant={"group"}
+          icon={Adote}
         />
       </Categories>
 

@@ -88,7 +88,9 @@ const Navbar = ({ children }) => {
     <Root data-testid="navbar">
       <Container>
         <Content>
-          <Logo image={Miauau} />
+          <Link>
+            <Logo image={Miauau} />
+          </Link>
           <Menu>
             <Button as={Link} to="/" color="default" variant="default">
               Início
