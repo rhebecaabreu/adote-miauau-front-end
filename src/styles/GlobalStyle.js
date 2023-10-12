@@ -40,6 +40,26 @@ const GlobalStyle = createGlobalStyle`
       color: ${(props) => props.theme.colors.primary.main};
     }
   }
+
+  .rc-dropdown {
+    .rc-menu {
+      border-radius: 10px;
+      background-color: ${(props) => props.theme.colors.primary.main};
+    }
+
+    .rc-menu > li {
+      padding: 8px 0;
+      text-align: center;
+    }
+
+    .rc-menu-item {
+      cursor: pointer;
+      font-size: 16px;
+      font-family: "Poppins", sans-serif;
+      color: ${(props) => props.theme.colors.primary.light};
+    }
+  }
+
 `;
 
 const GlobalStyleComposed = () => (

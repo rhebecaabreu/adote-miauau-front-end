@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { FaHeart, FaUserCircle } from "react-icons/fa";
-import Container from "components/atoms/Container";
-import Miauau from "../../assets/MiauauLogo.svg";
-import Button from "components/atoms/Button";
+import { SlArrowDown } from "react-icons/sl";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { TfiPlus } from "react-icons/tfi";
-import { SlArrowDown } from "react-icons/sl";
+import "rc-dropdown/assets/index.css";
+import Dropdown from "rc-dropdown";
+import Menu, { Item as MenuItem } from "rc-menu";
+import Container from "components/atoms/Container";
+import Miauau from "../../assets/MiauauLogo.svg";
+import Button from "components/atoms/Button";
 
 const Root = styled.header`
   position: relative;
@@ -22,7 +25,7 @@ const Root = styled.header`
   `}
 `;
 
-const Menu = styled.div`
+const NavbarMenu = styled.div`
   display: flex;
 
   a {
@@ -81,6 +84,23 @@ const Content = styled.div`
   }
 `;
 
+const AccountMenu = () => {
+  const menuSelected = ({ key }) => {
+    console.log(key);
+    if (key === "logout") {
+      Cookies.remove("email");
+      Cookies.remove("authentication_token");
+      window.location = "/";
+    }
+  };
+
+  return (
+    <Menu onSelect={menuSelected}>
+      <MenuItem key="logout">Sair</MenuItem>
+    </Menu>
+  );
+};
+
 const Navbar = ({ children }) => {
   const auth = Cookies.get("authentication_token");
 
@@ -91,7 +111,7 @@ const Navbar = ({ children }) => {
           <Link>
             <Logo image={Miauau} />
           </Link>
-          <Menu>
+          <NavbarMenu>
             <Button as={Link} to="/" color="default" variant="default">
               Início
             </Button>
@@ -112,9 +132,16 @@ const Navbar = ({ children }) => {
                   <FavoriteIcon /> Favoritos
                 </Button>
 
-                <Button as={Link} color="primary" variant="primary">
-                  <FaUserCircle /> Meu perfil <SlArrowDown />
-                </Button>
+                <Dropdown
+                  trigger={["click"]}
+                  overlay={AccountMenu}
+                  animation="slide-up"
+                  overlayClassName={"menu"}
+                >
+                  <Button as={Link} color="primary" variant="primary">
+                    <FaUserCircle /> Meu perfil <SlArrowDown />
+                  </Button>
+                </Dropdown>
               </>
             )}
             {!auth && (
@@ -122,7 +149,7 @@ const Navbar = ({ children }) => {
                 Entrar
               </Button>
             )}
-          </Menu>
+          </NavbarMenu>
         </Content>
       </Container>
     </Root>
