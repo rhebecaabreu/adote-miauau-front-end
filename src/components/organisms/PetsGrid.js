@@ -3,7 +3,7 @@ import Button from "components/atoms/Button";
 import Grid from "components/atoms/Grid";
 import PetCard, { CardBody, CardMedia } from "components/atoms/PetCard";
 import styled from "styled-components";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart, FaWhatsapp } from "react-icons/fa";
 import { CgGenderFemale, CgGenderMale } from "react-icons/cg";
 import PropTypes from "prop-types";
 import "react-responsive-modal/styles.css";
@@ -12,6 +12,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { format, parseISO } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
+import { Link } from "react-router-dom";
 
 const UserTitle = styled.p`
   font-size: 12px;
@@ -253,8 +254,16 @@ const PetsGrid = ({ pets }) => {
             </PetInfos>
           </Grid>
           <ModalActionArea>
-            <Button color="primary" variant="primary">
-              {selectedPet.user?.phone}
+            <Button
+              as={Link}
+              to={`https://api.whatsapp.com/send/?phone=55${selectedPet.user?.phone
+                .trim()
+                .replace("-", "")
+                .replace(" ", "")}&type=phone_number&app_absent=0`}
+              color="primary"
+              variant="primary"
+            >
+              <FaWhatsapp /> {selectedPet.user?.phone}
             </Button>
             <Button color="danger" variant="link">
               <FaRegHeart />
