@@ -16,14 +16,6 @@ const PetHealth = ({ setPublication }) => {
   const handlePetChange = (e) => {
     let { name, value } = e.target;
 
-    if (
-      name === "vaccinated" ||
-      name === "castrated" ||
-      name === "vermifugated"
-    ) {
-      value = value.toString() === "true";
-    }
-
     setPublication((prev) => ({
       ...prev,
       pet: {
@@ -39,8 +31,9 @@ const PetHealth = ({ setPublication }) => {
       <FormButtonGroup
         name={"vaccinated"}
         buttons={[
-          { id: true, name: "sim" },
-          { id: false, name: "não" },
+          { id: "yes", name: "sim" },
+          { id: "no", name: "não" },
+          { id: "unknown", name: "não sei" },
         ]}
         onChange={handlePetChange}
       />
@@ -49,8 +42,9 @@ const PetHealth = ({ setPublication }) => {
       <FormButtonGroup
         name={"castrated"}
         buttons={[
-          { id: true, name: "sim" },
-          { id: false, name: "não" },
+          { id: "yes", name: "sim" },
+          { id: "no", name: "não" },
+          { id: "unknown", name: "não sei" },
         ]}
         onChange={handlePetChange}
       />
@@ -59,8 +53,9 @@ const PetHealth = ({ setPublication }) => {
       <FormButtonGroup
         name={"vermifugated"}
         buttons={[
-          { id: true, name: "sim" },
-          { id: false, name: "não" },
+          { id: "yes", name: "sim" },
+          { id: "no", name: "não" },
+          { id: "unknown", name: "não sei" },
         ]}
         onChange={handlePetChange}
       />

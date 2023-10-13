@@ -152,7 +152,16 @@ const PetsGrid = ({ pets }) => {
     setSelectedPet({});
   };
 
-  const boolLabel = (bool) => (bool ? "Sim" : "Não");
+  const boolLabel = (bool) => {
+    if (bool === "yes") {
+      return "Sim";
+    } else if (bool === "no") {
+      return "Não";
+    } else {
+      return "Indefinido";
+    }
+  };
+
   const isFemale = (pet) => pet.pet?.sex === "female";
   const formatDateTime = (datetime) => {
     if (!datetime) return;
@@ -160,6 +169,17 @@ const PetsGrid = ({ pets }) => {
     return format(parsedDate, "dd 'de' MMMM 'de' yyyy 'às' HH:mm", {
       locale: ptBR,
     });
+  };
+  const isONG = (pet) => pet.user?.role === "ong";
+
+  const petSex = (pet) => {
+    if (isFemale(pet)) {
+      return "Feminino";
+    } else if (pet.pet?.sex === "male") {
+      return "Masculino";
+    } else {
+      return "Indefinido";
+    }
   };
 
   return (
@@ -169,7 +189,10 @@ const PetsGrid = ({ pets }) => {
           <PetCard id={pet.id} key={pet.id} onClick={() => onOpenModal(pet)}>
             <CardBody>
               <CardMedia image={pet.pet ? pet.pet?.images[0]?.file_url : ""} />
-              <UserTitle>{pet.user.full_name}</UserTitle>
+              <UserTitle>
+                <span>{isONG(pet) ? "ONG " : ""}</span>
+                {pet.user.full_name}
+              </UserTitle>
               <Description>{pet.title}</Description>
               <CardFooter>
                 <PublicationInfos>
@@ -219,7 +242,7 @@ const PetsGrid = ({ pets }) => {
             <PetInfos>
               <h1>{selectedPet.title}</h1>
               <h2>
-                <span>{selectedPet.user?.role === "ong" ? "ONG" : ""}</span>
+                <span>{isONG(selectedPet) ? "ONG " : ""}</span>
                 {selectedPet.user?.full_name}
               </h2>
               <h2>{formatDateTime(selectedPet.updated_at)}</h2>
@@ -232,7 +255,7 @@ const PetsGrid = ({ pets }) => {
                   <p>{selectedPet.pet?.age}</p>
 
                   <h3>Sexo</h3>
-                  <p>{isFemale(selectedPet) ? "Feminino" : "Masculino"} </p>
+                  <p>{petSex(selectedPet)} </p>
 
                   <h3>Vacinado</h3>
                   <p>{boolLabel(selectedPet.pet?.vaccinated)}</p>

@@ -124,7 +124,7 @@ const PetInfo = ({ publication, setPublication }) => {
         buttons={[
           { id: "female", name: "feminino" },
           { id: "male", name: "masculino" },
-          { id: "undefined", name: "não sei" },
+          { id: "unknown", name: "não sei" },
         ]}
         onChange={handlePetChange}
       />
