@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 import { FaHeart, FaUserCircle } from "react-icons/fa";
 import { SlArrowDown } from "react-icons/sl";
